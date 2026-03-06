@@ -1,0 +1,36 @@
+# 个人配置和凭证
+config.json
+credentials.json
+.env
+.env.local
+
+# 测试报告（包含个人信息）
+TEST-REPORT.md
+TEST-REPORT-FINAL.md
+
+# 临时文件
+*.tmp
+*.log
+*.swp
+*~
+.DS_Store
+
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+
+# 备份文件
+*.bak
+*.backup
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# 本地测试数据
+test-data/
+test-output/

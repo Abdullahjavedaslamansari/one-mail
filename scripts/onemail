@@ -1,0 +1,93 @@
+#!/bin/bash
+# oneMail CLI 主入口
+
+set -e
+
+SCRIPT_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+
+# 显示帮助
+show_help() {
+    cat << EOF
+oneMail - 统一邮箱管理工具
+
+用法:
+  onemail <command> [options]
+
+命令:
+  setup              初始化配置
+  fetch              收取邮件
+  send               发送邮件
+  accounts           账户管理
+  stats              邮件统计
+  test               运行测试
+  demo               功能演示
+  help               显示帮助
+
+示例:
+  # 初始化配置
+  onemail setup
+
+  # 收取未读邮件
+  onemail fetch --unread
+
+  # 发送邮件
+  onemail send --to recipient@example.com --subject "Hello" --body "Content"
+
+  # 查看账户
+  onemail accounts list
+
+  # 邮件统计
+  onemail stats --days 7
+
+详细文档:
+  cat $SCRIPT_DIR/QUICKSTART.md
+  cat $SCRIPT_DIR/EXAMPLES.md
+
+EOF
+}
+
+# 主函数
+main() {
+    if [ $# -eq 0 ]; then
+        show_help
+        exit 0
+    fi
+
+    local command="$1"
+    shift
+
+    case $command in
+        setup)
+            bash "$SCRIPT_DIR/setup.sh" "$@"
+            ;;
+        fetch)
+            bash "$SCRIPT_DIR/fetch.sh" "$@"
+            ;;
+        send)
+            bash "$SCRIPT_DIR/send.sh" "$@"
+            ;;
+        accounts)
+            bash "$SCRIPT_DIR/accounts.sh" "$@"
+            ;;
+        stats)
+            bash "$SCRIPT_DIR/stats.sh" "$@"
+            ;;
+        test)
+            bash "$SCRIPT_DIR/test.sh" "$@"
+            ;;
+        demo)
+            bash "$SCRIPT_DIR/demo.sh" "$@"
+            ;;
+        help|--help|-h)
+            show_help
+            ;;
+        *)
+            echo "❌ 未知命令: $command"
+            echo ""
+            show_help
+            exit 1
+            ;;
+    esac
+}
+
+main "$@"

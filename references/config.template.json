@@ -1,0 +1,26 @@
+{
+  "accounts": [
+    {
+      "name": "gmail",
+      "type": "gmail",
+      "email": "your@gmail.com",
+      "default": true
+    },
+    {
+      "name": "outlook",
+      "type": "outlook",
+      "email": "your@outlook.com",
+      "client_id": "your_client_id",
+      "default": false
+    },
+    {
+      "name": "163",
+      "type": "163",
+      "email": "your@163.com",
+      "imap_server": "imap.163.com",
+      "smtp_server": "smtp.163.com",
+      "default": false
+    }
+  ],
+  "default_account": "your@gmail.com"
+}
