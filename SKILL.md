@@ -29,6 +29,15 @@ bash scripts/fetch.sh --query "AI agent"        # 搜索
 bash scripts/fetch.sh --limit 10                # 限制数量
 ```
 
+## 阅读邮件
+
+```bash
+bash scripts/read.sh --id <message_id> --account <name>
+bash scripts/read.sh --account outlook --latest
+bash scripts/read.sh --account gmail --query "MacBook"
+bash scripts/read.sh --json                     # JSON 输出
+```
+
 ## 发送邮件
 
 ```bash
@@ -47,15 +56,6 @@ bash scripts/send.sh \
 ```
 
 注意：Outlook 附件限制 3MB。
-
-## 阅读邮件
-
-```bash
-bash scripts/read.sh --account gmail --latest           # 最新未读
-bash scripts/read.sh --account outlook --query "报告"    # 搜索并阅读
-bash scripts/read.sh --id <message_id> --account gmail   # 按 ID 阅读
-bash scripts/read.sh --account gmail --json              # JSON 格式输出
-```
 
 ## 账户管理
 
