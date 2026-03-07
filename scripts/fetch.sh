@@ -76,8 +76,10 @@ while IFS= read -r account; do
             ;;
     esac
     
-    # 合并结果
-    all_emails=$(echo "$all_emails" | jq --argjson new "$emails" '. + $new')
+    # 合并结果（跳过空响应）
+    if [ -n "$emails" ] && echo "$emails" | jq empty 2>/dev/null; then
+        all_emails=$(echo "$all_emails" | jq --argjson new "$emails" '. + $new')
+    fi
 done < <(echo "$accounts" | jq -c '.')
 
 # 按日期排序

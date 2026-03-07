@@ -73,6 +73,12 @@ fetch_outlook() {
     # 获取邮件
     local raw_emails=$(curl -s -H "Authorization: Bearer $access_token" "$api_url")
     
+    # 检查响应是否有效
+    if [ -z "$raw_emails" ] || ! echo "$raw_emails" | jq -e '.value' >/dev/null 2>&1; then
+        echo "[]"
+        return
+    fi
+    
     # 转换为统一格式
     echo "$raw_emails" | jq --arg account "outlook" '.value | map({
         id: .id,
