@@ -42,13 +42,13 @@ load_config
 
 # 获取要查询的账户列表
 if [ -n "$ACCOUNT" ]; then
-    accounts=$(echo "$CONFIG" | jq -r --arg name "$ACCOUNT" '.accounts[] | select(.name == $name)')
+    accounts=$(echo "$CONFIG" | jq -c --arg name "$ACCOUNT" '.accounts[] | select(.name == $name)')
     if [ -z "$accounts" ]; then
         echo "❌ 账户不存在: $ACCOUNT" >&2
         exit 1
     fi
 else
-    accounts=$(echo "$CONFIG" | jq -r '.accounts[]')
+    accounts=$(echo "$CONFIG" | jq -c '.accounts[]')
 fi
 
 # 收取邮件

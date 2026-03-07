@@ -67,7 +67,9 @@ fetch_outlook() {
     fi
     
     if [ -n "$filter" ]; then
-        api_url="$api_url"'&$filter='"$filter"
+        # URL 编码 filter 中的空格
+        local encoded_filter=$(echo "$filter" | sed 's/ /%20/g')
+        api_url="$api_url"'&$filter='"$encoded_filter"
     fi
     
     # 获取邮件

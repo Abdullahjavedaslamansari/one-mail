@@ -13,11 +13,12 @@ log() {
 # 加载配置
 load_config() {
     if [ ! -f "$CONFIG_FILE" ]; then
-        echo "❌ 配置文件不存在，请先运行: bash ~/clawd/skills/one-mail/setup.sh" >&2
+        echo "❌ 配置文件不存在，请先运行: bash scripts/setup.sh" >&2
         exit 1
     fi
     
     CONFIG=$(cat "$CONFIG_FILE")
+    export CONFIG
     
     if [ ! -f "$CREDS_FILE" ]; then
         echo "❌ 凭证文件不存在" >&2
@@ -25,6 +26,7 @@ load_config() {
     fi
     
     CREDS=$(cat "$CREDS_FILE")
+    export CREDS
 }
 
 # 获取账户凭证

@@ -1,6 +1,6 @@
 {
   "name": "one-mail",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "统一邮箱管理工具，支持 Gmail、Outlook 和网易邮箱",
   "author": "Huang Baixun ([@huangbaixun](https://github.com/huangbaixun))",
   "created": "2026-03-07",
